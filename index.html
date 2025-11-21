@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        #password-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #001f3f, #0074D9);
+            color: white;
+            flex-direction: column;
+        }
+        #password-page input {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        #password-page button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #FFDC00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: black;
+        }
+        #home-page {
+            display: none;
+            padding: 50px;
+            text-align: center;
+            background-color: #ffffff;
+            min-height: 100vh;
+            color: #001f3f;
+        }
+        h1 {
+            font-size: 3em;
+            color: #0074D9;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333333;
+        }
+        .highlight {
+            color: #2E8B57;
+        }
+    </style>
+</head>
+<body>
+    <div id="password-page">
+        <h2>Enter Password to Access</h2>
+        <input type="password" id="password-input" placeholder="Password">
+        <button onclick="checkPassword()">Submit</button>
+        <p id="error-msg" style="color: #FF4136; margin-top:10px;"></p>
+    </div>
+    <div id="home-page">
+        <h1>Welcome to the <span class="highlight">Student Portal</span></h1>
+        <p>This is your modern, professional student homepage. Explore resources, updates, and more!</p>
+    </div>
+    <script>
+        const PASSWORD = 'student123';
+
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const errorMsg = document.getElementById('error-msg');
+            if (input === PASSWORD) {
+                document.getElementById('password-page').style.display = 'none';
+                document.getElementById('home-page').style.display = 'block';
+                errorMsg.textContent = '';
+            } else {
+                errorMsg.textContent = 'Incorrect password. Try again.';
+            }
+        }
+
+        // Optionally: allow Enter key to submit
+        document.getElementById('password-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
